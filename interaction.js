@@ -9,40 +9,40 @@ function DnD(canvas, interactor) {
   this.endY = 0 ;
   this.isPressed = false;
 	// Developper les 3 fonctions gérant les événements
-  this.maFctGérantLaPression = function (evt) {
+  this.maFctGerantLaPression = function (evt) {
 
     if(!this.isPressed){
     this.isPressed = true;
     this.startX = getMousePosition(canvas,evt).x;
     this.startY = getMousePosition(canvas,evt).y;
-    this.interactor.onInteractionStart(this);
-    console.log("startX : "+ startX + "startY : "+startY + "endX : "+ endX + "endY : "+endY);
+    
+    console.log("startX : "+ this.startX + "startY : "+this.startY  + "endX : "+ this.endX + "endY : "+this.endY);
     }
   }.bind(this) ;
 
-  this.maFctGérantLeDéplacement = function (evt) {
+  this.maFctGerantLeDeplacement = function (evt) {
     if(this.isPressed){
       this.endX = getMousePosition(canvas,evt).x;
       this.endY = getMousePosition(canvas,evt).y;
-      this.interactor.onInteractionUpdate(this);
-      console.log("startX : "+ startX + "startY : "+startY + "endX : "+ endX + "endY : "+endY);
+    
+      console.log("startX : "+ this.startX + "startY : "+this.startY  + "endX : "+ this.endX + "endY : "+this.endY);
     }
   }.bind(this) ;
 
-  this.maFctGérantLeRelâchement = function (evt) {
+  this.maFctGerantLeRelachement = function (evt) {
     if(this.isPressed){
       this.endX = getMousePosition(canvas,evt).x;
       this.endY = getMousePosition(canvas,evt).y;
-      this.interactor.onInteractionEnd(this);
+      
       this.isPressed = false;
-      console.log("startX : "+ startX + "startY : "+startY + "endX : "+ endX + "endY : "+endY);
+      console.log("startX : "+ this.startX + "startY : "+this.startY  + "endX : "+ this.endX + "endY : "+this.endY);
     }
   }.bind(this) ;
 
 	// Associer les fonctions précédentes aux évènements du canvas.
   canvas.addEventListener('mousedown', this.maFctGerantLaPression, false);
-  canvas.addEventListener('mousemove', this.maFctGérantLeDéplacement, false);
-  canvas.addEventListener('mouseup', this.maFctGérantLeRelâchement, false);
+  canvas.addEventListener('mousemove', this.maFctGerantLeDeplacement, false);
+  canvas.addEventListener('mouseup', this.maFctGerantLeRelachement, false);
 }
 
 
