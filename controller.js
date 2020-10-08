@@ -49,6 +49,7 @@ function Pencil(ctx, drawing, canvas) {
 	this.onInteractionEnd= function (DnD){
 
 		drawing.addShape(this.currentShape);
+		drawing.updateShapeList(this.currentShape);
 		console.log(this.currentShape);
 		drawing.paint(ctx, canvas);
 	}.bind(this);
