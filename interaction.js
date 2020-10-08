@@ -15,7 +15,7 @@ function DnD(canvas, interactor) {
     this.isPressed = true;
     this.startX = getMousePosition(canvas,evt).x;
     this.startY = getMousePosition(canvas,evt).y;
-    
+    interactor.onInteractionStart(this);
     //console.log("startX : "+ this.startX + "startY : "+this.startY  + "endX : "+ this.endX + "endY : "+this.endY);
     }
   }.bind(this) ;
@@ -24,7 +24,7 @@ function DnD(canvas, interactor) {
     if(this.isPressed){
       this.endX = getMousePosition(canvas,evt).x;
       this.endY = getMousePosition(canvas,evt).y;
-    
+      interactor.onInteractionUpdate(this);
       //console.log("startX : "+ this.startX + "startY : "+this.startY  + "endX : "+ this.endX + "endY : "+this.endY);
     }
   }.bind(this) ;
@@ -33,7 +33,7 @@ function DnD(canvas, interactor) {
     if(this.isPressed){
       this.endX = getMousePosition(canvas,evt).x;
       this.endY = getMousePosition(canvas,evt).y;
-      
+      interactor.onInteractionEnd(this);
       this.isPressed = false;
       //console.log("startX : "+ this.startX + "startY : "+this.startY  + "endX : "+ this.endX + "endY : "+this.endY);
     }

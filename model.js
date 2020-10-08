@@ -12,7 +12,12 @@ function Drawing(){
 
 	this.addShape = function(shape) {
 		this.shapes.push(shape);
-	}.bind(this) ;
+  }.bind(this) ;
+
+  this.removeShape = function(id){
+    this.shapes.splice(id,1);
+};
+
 };
 
 
